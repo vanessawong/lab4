@@ -38,7 +38,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
-app.get('/project/:name', project.viewProject);
+app.get('/project', project.viewProject);
 app.get('/hello/:userName', hello.view);
 // Example route
 // app.get('/users', user.list);
@@ -46,3 +46,9 @@ app.get('/hello/:userName', hello.view);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+exports.viewProject = function(req, res) {
+	var name = req.params.name; 
+  	console.log("The project name is: " + name);
+	res.render('project');
+	};
